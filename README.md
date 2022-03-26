@@ -1,5 +1,5 @@
 # piano-to-bass
-A small project that helps to transfer melodies from piano tutorial to bass guitar. <br>
+A small project that helps to transfer melodies from piano tutorials to bass guitar. <br>
 The keys on piano fragment can be activated by a direct click or by using keys:<br>
 <b>Z ,</b> for note <b>C</b> <br>
 <b>S L,</b> for note <b>C#</b> <br>
