@@ -2,24 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Piano to Bass</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalise.css">
 </head>
 <body>
     <div class="heading">
-        <div id="tuning">TUNING<i class="arrow"></i></div>
+        <div id="tuning" class="menu">TUNING<i class="arrow"></i>
+            <div class="tuning-block hidden">
+                <div class="tuning-option" >E-A-D-G</div>
+                <div class="tuning-option" >D–A–D–G</div>
+                <div class="tuning-option" >B–E–A–D</div>
+            </div>
+        </div>
         <h1>Piano to Bass</h1>
-        <div id="about">ABOUT<i class="arrow"></i></div>
+        <div id="about" class="menu">ABOUT<i class="arrow"></i></div>
     </div>
     <div class="options">
-        <div class="tuning-block hidden">
-            <div class="tuning-option" >E-A-D-G</div>
-            <div class="tuning-option" >D–A–D–G</div>
-            <div class="tuning-option" >B–E–A–D</div>
-        </div>
         <div class="about-block hidden">
             <div class="description">
                 It's a small project I created for my hobby. <br> The Internet is full of simple piano tutorials for popular melodies. <br> This app helps to transfer those melodies to bass guitar.
@@ -29,17 +32,15 @@
     <div class="bass-group">
         <div class="bassneck-group">
             <div class="bass-background"></div>
-            <div class="pin-group">
-                <div class="pin"></div>
-                <div class="pin"></div>
-                <div class="pin"></div>
-                <div class="pin"></div>
-            </div>
             <div class="pegs-group">
                 <div class="tuning-peg"></div>
+                <div class="pin"></div>
                 <div class="tuning-peg"></div>
+                <div class="pin"></div>
                 <div class="tuning-peg"></div>
-                <div class="tuning-peg"></div>
+                <div class="pin"></div>
+                <div class="tuning-peg"></div>               
+                <div class="pin"></div>
             </div>
         </div>
         <div class="fret-group">
@@ -173,18 +174,24 @@
     </div>
     <div class="piano-group">
         <div class="black-keys">
+            <div class="space"></div>
             <button class="pianonote black-key">C#</button>
-            <button class="pianonote black-key space">D#</button>
+            <button class="pianonote black-key">D#</button>
+            <div class="space"></div>
             <button class="pianonote black-key">F#</button>
             <button class="pianonote black-key">G#</button>
-            <button class="pianonote black-key space">A#</button>
+            <button class="pianonote black-key">A#</button>
+            <div class="space"></div>
             <button class="pianonote black-key">C#</button>
-            <button class="pianonote black-key space">D#</button>
+            <button class="pianonote black-key">D#</button>
+            <div class="space"></div>
             <button class="pianonote black-key">F#</button>
             <button class="pianonote black-key">G#</button>
-            <button class="pianonote black-key space">A#</button>
+            <button class="pianonote black-key">A#</button>
+            <div class="space"></div>
             <button class="pianonote black-key">C#</button>
-            <button class="pianonote black-key space">D#</button>
+            <button class="pianonote black-key">D#</button>
+            <div class="space"></div>
             <button class="pianonote black-key">F#</button>
             <button class="pianonote black-key">G#</button>
             <button class="pianonote black-key">A#</button>

@@ -4,19 +4,22 @@
     box-sizing: border-box;
 }
 
+
 .heading {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+
     height: 50px;
-    width: 880px;
-    margin: 0 auto 20px auto;
+    max-width: 880px;
+    margin: 0 auto;
 }
 
-.heading div{
+.heading .menu{
     display: block;
     width: 100px;
     cursor: pointer;
-    margin-top: 30px;
     
     font-family: Poppins;
     text-align: center;
@@ -24,7 +27,7 @@
     font-weight: 300;
     letter-spacing: 5px;
 }
-.heading div:hover{
+.heading .menu:hover{
     text-decoration: underline;
 }
 .arrow {
@@ -32,12 +35,12 @@
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;
-    margin-bottom: 3px;
-    margin-left: 3px;
+    margin-left: 4%;
     transition: 0.5s all;
+    bottom: 50%;
 
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
+    -webkit-transform: translateY(-50%) rotate(45deg);
 }
 .arrow.up {
     transform: rotate(-135deg);
@@ -47,7 +50,7 @@
 
 .heading h1 {
     display: block;
-    width: 600px;
+    max-width: 600px;
     height: 50px;
     margin: 0;
 
@@ -59,15 +62,20 @@
 .options {
     margin-top: 40px;
     height: 0;
-    width: 900px;
+    max-width: 900px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
 }
 
-.options .tuning-block{
+#tuning {
+    position: relative;
+}
+
+
+#tuning .tuning-block{
     left: 0;
-    top: 0;
+    top: 30px;
     width: 140px;
     position: absolute;
     display: flex;
@@ -77,16 +85,16 @@
     background: white;
     transition: 0.5s all
 }
-.options .tuning-block.hidden{
+#tuning  .tuning-block.hidden{
     height: 0;
     opacity: 0;
 }
-.options .tuning-block.hidden div{
+#tuning  .tuning-block.hidden div{
     display: none;
 }
 
 
-.options .tuning-block div{
+#tuning  .tuning-block div{
     position: static;
     width: 140px;
     cursor: pointer;
@@ -99,14 +107,14 @@
     color: gray;
     border-top: 1px dashed gray;
 }
-.options .tuning-block div:first-child{
+#tuning  .tuning-block div:first-child{
     border: none;
 }
-.options .tuning-block div:hover{
+#tuning  .tuning-block div:hover{
     background: gray;
     color: white;
 }
-.options .tuning-block div:active{
+#tuning  .tuning-block div:active{
     background: rgba(255,0,0, 0.6);
     color: white;
 }
@@ -140,71 +148,29 @@
 
 
 .bass-group{
-    width: 1360px;
+    max-width: 1360px;
     height: 300px;
-    margin: 70px 0 0 120px;
+    margin: 80px auto;
     position: relative;
+    transform: translateX(-4%);
 }
 .bass-group .bassneck-group{
-    width: 1360px;
+    width: 100%;
     height: 300px;
     position: relative;
+
+    overflow: hidden;
 }
 .bass-group .bassneck-group .bass-background {
     width: 1360px;
-    height: 300px;
+    height: 100%;
     position: absolute;
+    left: 0;
     background: center / contain no-repeat url(images/bassbg.png);
     z-index: -3;
-}
-.bass-group .bassneck-group .pin-group{
-    position: relative;
-}
 
-.bass-group .bassneck-group .pin{
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    background: center / contain no-repeat url(images/pin.png);
-    z-index: -1;
-    transition: 0.4s all;
+    overflow: hidden;
 }
-.bass-group .bassneck-group .pin.active{
-    animation-name: pin-rotation;
-    animation-duration: 0.4s;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-}
-
-@keyframes pin-rotation{
-    0%{
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg)
-    }
-    100%{
-        transform: rotate(-360deg);
-        -webkit-transform: rotate(-360deg);
-    }
-}
-
-
-.bass-group .bassneck-group .pin:nth-child(1){
-    left: 254px;
-    top: 143px;
-}
-.bass-group .bassneck-group .pin:nth-child(2) {
-    left: 186px;
-    top: 129px;
-}
-.bass-group .bassneck-group .pin:nth-child(3) {
-    left: 122px;
-    top: 117px;
-}
-.bass-group .bassneck-group .pin:nth-child(4) {
-    left: 56px;
-    top: 107px;
-}
-
 
 
 
@@ -212,7 +178,7 @@
     position: absolute;
     z-index: 0;
     display: flex;
-    left: 24px;
+    left: 22px;
     top: 169px;
     justify-content: space-between;
     transform: rotate(-167deg);
@@ -227,18 +193,12 @@
     background: center / contain no-repeat url(images/peg1.png);
     cursor: pointer;
 }
-.bass-group .bassneck-group .pegs-group .tuning-peg.active{
+.bass-group .bassneck-group .pegs-group .tuning-peg:hover{
     animation-name: peg-rotation;
     animation-duration: 0.2s;
     animation-iteration-count: 2;
     animation-direction: alternate;
 }
-/* .bass-group .bassneck-group .pegs-group .tuning-peg:hover{
-    animation-name: peg-rotation;
-    animation-duration: 0.2s;
-    animation-iteration-count: 2;
-    animation-direction: alternate;
-} */
 
 @keyframes peg-rotation{
     0%{
@@ -258,6 +218,51 @@
     }
 }
 
+.bass-group .bassneck-group .pegs-group .tuning-peg:hover + .pin{
+    animation-name: pin-rotation;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+}
+
+.bass-group .bassneck-group .pin{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background: center / contain no-repeat url(images/pin.png);
+    z-index: -1;
+    transition: 0.4s all;
+}
+
+@keyframes pin-rotation{
+    0%{
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg)
+    }
+    100%{
+        transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+
+.bass-group .bassneck-group .pin:nth-child(2){
+    left: 7.3%;
+    top: 142%;
+}
+.bass-group .bassneck-group .pin:nth-child(4) {
+    left: 33.6%;
+    top: 139%;
+}
+.bass-group .bassneck-group .pin:nth-child(6) {
+    left: 58.5%;
+    top: 134%;
+}
+.bass-group .bassneck-group .pin:nth-child(8) {
+    left: 83.3%;
+    top: 127%;
+}
+
 
 
 .bass-group .fret-group {
@@ -265,97 +270,84 @@
     width: 1050px;
     height: 110px;
     top: 70px;
-    right: 36px;
-    display: flex;
+    left: 20%;
+
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr 42fr 39fr 38fr 36fr 34fr 32fr 29fr 28fr;
 }
 .bass-group .fret-group .fret {
     width: 28px;
     height: 110px;
     padding: 9px 0 9px 0;
 
+    justify-self: center;
+
     display: flex;
     flex-direction: column;
     align-items:center;
-    justify-content:space-between
+    justify-content:space-between;
+
+    overflow: hidden;
 }
 .bass-group .fret-group .fret:nth-child(1){
-    width: 65px;
     padding: 26px 0 26px 0;
 }
 .bass-group .fret-group .fret:nth-child(2){
-    width: 80px;
     padding: 24px 0 24px 0;
 }
 .bass-group .fret-group .fret:nth-child(3){
-    width: 73px;
     padding: 23px 0 23px 0;
 }
 .bass-group .fret-group .fret:nth-child(4){
-    width: 68px;
     padding: 22px 0 22px 0;
 }
 .bass-group .fret-group .fret:nth-child(5){
-    width: 66px;
     padding: 21px 0 21px 0;
 }
 .bass-group .fret-group .fret:nth-child(6){
-    width: 61px;
     padding: 20px 0 20px 0;
 }
 .bass-group .fret-group .fret:nth-child(7){
-    width: 59px;
     padding: 19px 0 19px 0;
 }
 .bass-group .fret-group .fret:nth-child(8){
-    width: 57px;
     padding: 18px 0 18px 0;
 }
 .bass-group .fret-group .fret:nth-child(9){
-    width: 54px;
     padding: 17px 0 17px 0;
 }
 .bass-group .fret-group .fret:nth-child(10){
-    width: 51px;
     padding: 16px 0 16px 0;
 }
 .bass-group .fret-group .fret:nth-child(11){
-    width: 47px;
     padding: 15px 0 15px 0;
 }
 .bass-group .fret-group .fret:nth-child(12){
-    width: 47px;
     padding: 14px 0 14px 0;
 }
 .bass-group .fret-group .fret:nth-child(13){
-    width: 44px;
     padding: 13px 0 13px 0;
 }
 .bass-group .fret-group .fret:nth-child(14){
-    width: 42px;
     padding: 12px 0 12px 0;
 }
 .bass-group .fret-group .fret:nth-child(15){
-    width: 39px;
     padding: 11px 0 11px 0;
 }
 .bass-group .fret-group .fret:nth-child(16){
-    width: 38px;
     padding: 11px 0 11px 0;
 }
 .bass-group .fret-group .fret:nth-child(17){
-    width: 36px;
     padding: 10px 0 10px 0;
 }
 .bass-group .fret-group .fret:nth-child(18){
-    width: 34px;
     padding: 10px 0 10px 0;
 }
 .bass-group .fret-group .fret:nth-child(19){
-    width: 32px;
     padding: 10px 0 10px 0;
 }
 .bass-group .fret-group .fret:nth-child(20){
-    width: 29px;
     padding: 9px 0 9px 0;
 }
 .bass-group .fret-group .fret .bassnote {
@@ -368,29 +360,32 @@
     text-align: center;
     color: #1A1A1A;
     cursor: pointer;
+
+    overflow: hidden;
 }
 
 
 
 .piano-group {
     margin: 70px auto;
-    width: 880px;
+    max-width: 880px;
     height: 230px;
     position: relative;
 }
 
 .piano-group .black-keys{
+    width: 100%;
     position: absolute;
-    left: 48px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(22, 1fr);
+    pointer-events: none;
 }
 .piano-group .black-keys button{
     background-color: #1A1A1A;
-    width: 24px;
+    width: 60%;
     height: 150px;
-    margin: 0;
-    margin-right: 16px;
     padding: 0;
+    justify-self: center;
 
     outline: none;
     border: 1px solid rgb(29, 29, 29);
@@ -399,19 +394,19 @@
 
     color: white;
     cursor: pointer;
+
+    pointer-events: visible;
 }
 .piano-group .black-keys .space{
-    margin-right: 56px
+    pointer-events: none;
 }
-
-
 .piano-group .white-keys {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 0.5fr repeat(21, 1fr) 0.5fr;
 }
 .piano-group .white-keys button{
     background-color: white;
-    width: 40px;
+    width: 100%;
     height: 230px;
     margin: 0;
     padding: 0;
@@ -431,7 +426,7 @@
 
 .piano-group .white-keys .blanc{
     background-color: white;
-    width: 20px;
+    width: 100%;
     height: 230px;
 
     outline: none;
@@ -445,4 +440,173 @@
 .piano-group .white-keys .blanc:last-child{
     border-right: none;
     border-radius: 0px 0px 0px 6px;
+}
+
+@media (max-width: 1550px){
+    .bass-group{
+        transform: translateX(0%);
+    }
+
+}
+
+@media (max-width: 1360px){
+    .bass-group .bassneck-group .bass-background{
+        left: -60px;
+    }
+    .bass-group .fret-group{
+        left: 213px;
+    }
+    .bass-group .bassneck-group .pegs-group {
+        left: -38px;
+    }
+}
+@media (max-width: 1280px){
+    .bass-group .bassneck-group .bass-background{
+        left: -150px;
+    }
+    .bass-group .fret-group{
+        left: 123px;
+    }
+    .bass-group .bassneck-group .pegs-group {
+        left: -128px;
+    }
+
+}
+@media (max-width: 1200px){
+    .bass-group .bassneck-group .bass-background{
+        left: -250px;
+    }
+    .bass-group .fret-group{
+        left: 23px;
+    }
+    .bass-group .bassneck-group .pegs-group {
+        left: -227px;
+    }
+}
+@media (max-width: 1100px){
+    .bass-group .bassneck-group .pegs-group{
+        display: none;
+    }
+
+    .bass-group .bassneck-group .bass-background{
+        left: -280px;
+    }
+    .bass-group .fret-group{
+        left: 0;
+    }
+    .bass-group .fret-group{
+        width: 1043px;
+        grid-template-columns: 58fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr 42fr 39fr 38fr 36fr 34fr 32fr 29fr 28fr;
+    }
+}
+@media (max-width: 1050px){
+    .bass-group .fret-group{
+        width: 1015px;
+        grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr 42fr 39fr 38fr 36fr 34fr 32fr 29fr;
+    }
+    .bass-group .fret-group .fret:nth-last-child(-n+1){
+        display: none;
+    }
+}
+@media (max-width: 1020px){
+    .bass-group .fret-group{
+        width: 986px;
+        grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr 42fr 39fr 38fr 36fr 34fr 32fr;
+    }
+    .bass-group .fret-group .fret:nth-last-child(-n+2){
+        display: none;
+    }
+}
+
+
+
+@media (max-width: 991px) {
+    .bass-group .fret-group{
+        width: 920px;
+        grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr 42fr 39fr 38fr 36fr;
+    }
+    .bass-group .fret-group .fret:nth-last-child(-n+4){
+        display: none;
+    }
+    .piano-group .white-keys {
+        grid-template-columns: 0.5fr repeat(14, 1fr) 0.5fr;
+    }
+    .piano-group .white-keys button:nth-last-child(-n+8){
+        display: none;
+    }
+    .piano-group .black-keys{
+        grid-template-columns: repeat(15, 1fr);
+    }
+    .piano-group .black-keys button:nth-last-child(-n+6){
+        display: none;
+    }
+    .piano-group .black-keys .space:nth-child(6){
+        display: none;
+    }
+}
+@media (max-width: 920px){
+    .heading{
+        padding: 0 20px;
+    }
+    .bass-group .fret-group{
+        width: 846px;
+        grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr 42fr 39fr;
+    }
+    .bass-group .fret-group .fret:nth-last-child(-n+6){
+        display: none;
+    }
+}
+@media (max-width: 840px){
+    .bass-group .fret-group{
+        max-width: 767px;
+        grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr;
+    }
+    .bass-group .fret-group .fret:nth-last-child(-n+8){
+        display: none;
+    }
+}
+
+
+@media (max-width: 767px){
+    .bass-group .bassneck-group .bass-background {
+        left: -35%;
+        width: 172%;
+        height: 100%;
+    }
+    #tuning{
+        display: none;
+    }
+    #about{
+        display: none;
+    }
+    h1{
+        width: 100%;
+    }
+    .bass-group .fret-group{
+        width: 97%;
+        grid-template-columns: 65fr 80fr 73fr 68fr 66fr 61fr 59fr 57fr 54fr 51fr 47fr 47fr 44fr;
+    }
+    .bass-group .fret-group .fret:nth-last-child(-n+8){
+        display: none;
+    }
+    
+}
+@media (max-width: 575px){
+
+    .piano-group .white-keys {
+        grid-template-columns: 0.5fr repeat(7, 1fr) 0.5fr;
+    }
+    .piano-group .white-keys button:nth-last-child(-n+15){
+        display: none;
+    }
+    .piano-group .black-keys{
+        grid-template-columns: repeat(8, 1fr);
+    }
+    .piano-group .black-keys button:nth-last-child(-n+13){
+        display: none;
+    }
+    .piano-group .black-keys .space:nth-child(5){
+        display: none;
+    }
+
 }

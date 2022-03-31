@@ -2,7 +2,7 @@
 const pianoNotes = document.querySelectorAll(".pianonote"),
       bassNotes = document.querySelectorAll(".bassnote")
 
-let notesInfo = [{note:"C", color:"rgba(255,0,0, 0.6)", key:"KeyZ", keySecond: "Comma"},
+const notesInfo = [{note:"C", color:"rgba(255,0,0, 0.6)", key:"KeyZ", keySecond: "Comma"},
                 {note:"C#", color:"rgb(255,120,120)", key:"KeyS", keySecond: "KeyL"},
                 {note:"D", color:"rgba(255,128,64, 0.6)", key:"KeyX", keySecond: "Period"},
                 {note:"D#", color:"rgb(255,150,120)", key:"KeyD", keySecond: "Semicolon"},
@@ -15,7 +15,9 @@ let notesInfo = [{note:"C", color:"rgba(255,0,0, 0.6)", key:"KeyZ", keySecond: "
                 {note:"A#", color:"rgb(170,170,255)", key:"KeyJ"},
                 {note:"B", color:"rgba(240,50,240, 0.6)", key:"KeyM"}]
 
-let allowedKeys =["KeyZ", "Comma", "KeyS", "KeyL", "KeyX", "Period", "KeyD", "Semicolon", "KeyC",  "Slash", "KeyV", "KeyG", "KeyB", "KeyH", "KeyN", "KeyJ", "KeyM"]
+const allowedKeys =["KeyZ", "Comma", "KeyS", "KeyL", "KeyX", "Period", "KeyD", "Semicolon", "KeyC",  "Slash", "KeyV", "KeyG", "KeyB", "KeyH", "KeyN", "KeyJ", "KeyM"]
+const colorBlack = "#1A1A1A",
+      colorWhite = "rgba(255, 255, 255, 0.4)"
 
 document.addEventListener("keydown", (e)=>{
     if (allowedKeys.includes(e.code)) {
@@ -41,7 +43,7 @@ function showBassNotes (key){
     if(!key.target.classList.contains("black-key")){
         key.target.style.background = `linear-gradient(white, ${activeNote.color}`
     } else {
-        key.target.style.background = `linear-gradient(rgb(29, 29, 29), ${activeNote.color}`
+        key.target.style.background = `linear-gradient(${colorBlack}, ${activeNote.color}`
     }
 
 }
@@ -49,9 +51,9 @@ function showBassNotes (key){
 function hideNotes (notes) {
     notes.forEach(el=>{
         if (!el.classList.contains("black-key")) {
-            el.style.background = "rgba(255, 255, 255, 0.4)"
+            el.style.background = colorWhite
         } else {
-            el.style.background = "#1A1A1A"
+            el.style.background = colorBlack
         }  
     })
 }
@@ -61,9 +63,9 @@ function hideSpecificNotes (e, notes) {
     notes.forEach(el=>{
         if (el.textContent == note[0].note) {
             if (!el.classList.contains("black-key")) {
-                el.style.background = "rgba(255, 255, 255, 0.4)"
+                el.style.background = colorWhite
             } else {
-                el.style.background = "#1A1A1A"
+                el.style.background = colorBlack
             }  
         } 
     })
@@ -77,12 +79,11 @@ function showNotesKey(note) {
         }
     })
     pianoNotes.forEach(e=>{
-        let colors = ["white", "rgb(29, 29, 29)"]
         if (e.textContent == note){
             if(!e.classList.contains("black-key")){
-                e.style.background = `linear-gradient(${colors[0]}, ${activeNote.color}`
+                e.style.background = `linear-gradient(white, ${activeNote.color}`
             } else {
-                e.style.background = `linear-gradient(${colors[1]}, ${activeNote.color}`
+                e.style.background = `linear-gradient(${colorBlack}, ${activeNote.color}`
             }
         }
     })
@@ -100,9 +101,10 @@ let tuningOptions = document.querySelectorAll(".tuning-option")
 function tuneAll(firstString, secondString, thirdString, fourthString){
 
     function tuneString (string, id) {
+        const nOfSemitones = 12
         bassNotes[id].textContent=notesInfo[string].note
         string = string + 1;
-        if (string > 11){
+        if (string == nOfSemitones){
             string = 0
         }
         return (string)
@@ -148,19 +150,3 @@ tuning.addEventListener("click", ()=>{
     arrows[0].classList.toggle("up")
     tuningBlock.classList.toggle("hidden")
 })
-
-
-// Tuning pegs
-let tuningPegs = document.querySelectorAll(".tuning-peg"),
-    pinItems = document.querySelectorAll(".pin")
-
-
-tuningPegs.forEach((el, id)=>{el.addEventListener("mouseover", ()=>{
-    tuningPegs[id].classList.add("active")
-    pinItems[id].classList.add("active")
-})})
-
-tuningPegs.forEach((el, id)=>{el.addEventListener("mouseout", ()=>{
-    tuningPegs[id].classList.remove("active")
-    pinItems[id].classList.remove("active")
-})})
